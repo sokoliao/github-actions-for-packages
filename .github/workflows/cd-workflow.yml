@@ -2,14 +2,10 @@
 
 name: Node CI
 
-on:
-  push:
-    paths:
-      - "**Dockerfile**"
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
       - name: npm install and build webpack
