@@ -2,14 +2,10 @@
 
 name: Node CI
 
-on:
-  push:
-    paths:
-      - "**Dockerfile**"
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
       - name: npm install and build webpack
@@ -58,6 +54,7 @@ jobs:
           path: public
       - name: Build container image
         uses: docker/build-push-action@v1
+        with:
           username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
           registry: docker.pkg.github.com
